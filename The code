@@ -1,0 +1,462 @@
+import pynput
+from pynput.keyboard import Key, Controller
+import pytesseract
+from random import choice
+keyboard = Controller()
+import time
+import numpy as np
+from PIL import ImageGrab
+import threading
+import cv2
+from pynput.mouse import Button, Controller
+from playsound import playsound
+
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+mouse = Controller()
+e = threading.Event()
+import sys
+
+
+
+
+
+
+
+
+
+def randomnum(blacklist,min,max):
+    number = choice([i for i in range(min, max) if i not in blacklist])
+    return number
+
+
+
+
+def shut_down():
+    e.wait(10800)
+    mouse.position = (1455, 545)
+    mouse.click(Button.left, 1)
+    mouse.position = (1455, 545)
+    mouse.click(Button.left, 1)
+    mouse.position = (1455, 545)
+    mouse.click(Button.left, 1)
+    mouse.position = (1455, 545)
+    mouse.click(Button.left, 1)
+    mouse.position = (1455, 545)
+    mouse.click(Button.left, 1)
+
+
+def activee():
+    threading.Timer(30.0, activee).start()
+    activee.active = True
+
+
+def type(word, pressX, pressY, wait):
+    e.wait(wait)
+    e.wait(2)
+    position = mouse.position
+    mouse.position = (pressX, pressY)
+    mouse.click(Button.left, 1)
+    keyboard.type(word)
+    e.wait(0.1)
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+    print("positive")
+    mouse.position = position
+
+
+def order(com,min,max):
+    lst = []
+
+    for i in range(8):
+        newnum = randomnum(lst,min,max)
+        lst.append(newnum)
+
+    thread = threading.Thread(target=type, args=(com, 174, 1009, lst[0]))
+    thread_two = threading.Thread(target=type, args=(com, 174, 599, lst[1]))
+    thread_three = threading.Thread(target=type, args=(com, 174, 359, lst[2]))
+    thread_four = threading.Thread(target=type, args=(com, 174, 159, lst[3]))
+    thread_five = threading.Thread(target=type, args=(com, 1200, 159, lst[4]))
+    thread_six = threading.Thread(target=type, args=(com, 1200, 359, lst[5]))
+    thread_seven = threading.Thread(target=type, args=(com, 1459, 359, lst[6]))
+    thread_eight = threading.Thread(target=type, args=(com, 1200, 599, lst[7]))
+
+    thread_two.start()
+    thread_four.start()
+    thread.start()
+    thread_three.start()
+    thread_six.start()
+    thread_seven.start()
+    thread_five.start()
+    thread_eight.start()
+
+
+def random():
+    threading.Timer(400.0, random).start()
+    keyboard.type("!i")
+    e.wait(0.1)
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+
+
+def slot():
+    threading.Timer(60.0, slot).start()
+    thread = threading.Thread(target=type, args=("!slotop", 174, 1009, 2))
+    thread.start()
+
+
+def squid():
+    threading.Timer(180.0, squid).start()
+    thread = threading.Thread(target=type, args=("!squido", 174, 1009, 2))
+    thread.start()
+
+
+def rps():
+    threading.Timer(600.0, rps).start()
+    thread = threading.Thread(target=type, args=("!rps rock", 174, 1009, 2))
+    thread.start()
+
+
+def spawn():
+    threading.Timer(3600.0, spawn).start()
+    thread = threading.Thread(target=type, args=("!spawn", 174, 1009, 2))
+    thread.start()
+
+
+def slot2():
+    threading.Timer(60.0, slot2).start()
+    thread = threading.Thread(target=type, args=("!slotx", 174, 599, 2))
+    thread.start()
+
+
+def squid2():
+    threading.Timer(180.0, squid2).start()
+    thread = threading.Thread(target=type, args=("!squid", 174, 599, 2))
+    thread.start()
+
+
+def rps2():
+    threading.Timer(600.0, rps2).start()
+    thread = threading.Thread(target=type, args=("!rps rock", 174, 599, 2))
+    thread.start()
+
+
+def spawn2():
+    threading.Timer(3600.0, spawn2).start()
+    thread = threading.Thread(target=type, args=("!spawn", 174, 599, 2))
+    thread.start()
+
+
+def slot3():
+    threading.Timer(60.0, slot3).start()
+    thread = threading.Thread(target=type, args=("!slot", 174, 359, 2))
+    thread.start()
+
+
+def squid3():
+    threading.Timer(180.0, squid3).start()
+    thread = threading.Thread(target=type, args=("!squid", 174, 359, 2))
+    thread.start()
+
+
+def rps3():
+    threading.Timer(600.0, rps3).start()
+    thread = threading.Thread(target=type, args=("!rps paper", 174, 359, 2))
+    thread.start()
+
+
+def spawn3():
+    threading.Timer(3600.0, spawn3).start()
+    thread = threading.Thread(target=type, args=("!spawn", 174, 359, 2))
+    thread.start()
+
+
+def slot4():
+    threading.Timer(60.0, slot4).start()
+    thread = threading.Thread(target=type, args=("!slot", 174, 159, 2))
+    thread.start()
+
+
+def squid4():
+    threading.Timer(180.0, squid4).start()
+    thread = threading.Thread(target=type, args=("!squid", 174, 159, 2))
+    thread.start()
+
+
+def rps4():
+    threading.Timer(600.0, rps4).start()
+    thread = threading.Thread(target=type, args=("!rps paper", 174, 159, 2))
+    thread.start()
+
+
+def spawn4():
+    threading.Timer(3600.0, spawn4).start()
+    thread = threading.Thread(target=type, args=("!spawn", 174, 159, 2))
+    thread.start()
+
+
+def slot5():
+    threading.Timer(60.0, slot5).start()
+    thread = threading.Thread(target=type, args=("!slot", 1200, 159, 2))
+    thread.start()
+
+
+def squid5():
+    threading.Timer(180.0, squid5).start()
+    thread = threading.Thread(target=type, args=("!squid", 1200, 159, 2))
+    thread.start()
+
+
+def rps5():
+    threading.Timer(600.0, rps5).start()
+    thread = threading.Thread(target=type, args=("!rps paper", 1200, 159, 2))
+    thread.start()
+
+
+def spawn5():
+    threading.Timer(3600.0, spawn5).start()
+    thread = threading.Thread(target=type, args=("!spawn", 1200, 159, 2))
+    thread.start()
+
+
+def slot6():
+    threading.Timer(60.0, slot6).start()
+    thread = threading.Thread(target=type, args=("!slot", 1200, 359, 2))
+    thread.start()
+
+
+def squid6():
+    threading.Timer(180.0, squid6).start()
+    thread = threading.Thread(target=type, args=("!squid", 1200, 359, 2))
+    thread.start()
+
+
+def rps6():
+    threading.Timer(600.0, rps6).start()
+    thread = threading.Thread(target=type, args=("!rps rock", 1200, 359, 2))
+    thread.start()
+
+
+def spawn6():
+    threading.Timer(3600.0, spawn6).start()
+    thread = threading.Thread(target=type, args=("!spawn", 1200, 359, 2))
+    thread.start()
+
+
+def slot7():
+    threading.Timer(60.0, slot7).start()
+    thread = threading.Thread(target=type, args=("!slot", 1200, 599, 2))
+    thread.start()
+
+
+def squid7():
+    threading.Timer(180.0, squid7).start()
+    thread = threading.Thread(target=type, args=("!squid", 1200, 599, 2))
+    thread.start()
+
+
+def rps7():
+    threading.Timer(600.0, rps7).start()
+    thread = threading.Thread(target=type, args=("!rps rock", 1200, 599, 2))
+    thread.start()
+
+
+def spawn7():
+    threading.Timer(3600.0, spawn7).start()
+    thread = threading.Thread(target=type, args=("!spawn", 1200, 599, 2))
+    thread.start()
+
+
+def slot8():
+    threading.Timer(60.0, slot8).start()
+    thread = threading.Thread(target=type, args=("!slot", 1495, 359, 2))
+    thread.start()
+
+
+def squid8():
+    threading.Timer(180.0, squid8).start()
+    thread = threading.Thread(target=type, args=("!squid", 1495, 359, 2))
+    thread.start()
+
+
+def rps8():
+    threading.Timer(600.0, rps8).start()
+    thread = threading.Thread(target=type, args=("!rps rock", 1495, 359, 2))
+    thread.start()
+
+
+def spawn8():
+    threading.Timer(3600.0, spawn8).start()
+    thread = threading.Thread(target=type, args=("!spawn", 1495, 359, 2))
+    thread.start()
+
+
+def contains_word(text, word, pressX, pressY):
+    pog = (word) in (text)
+    if pog == True:
+        playsound('navi_hey_listen_floating.mp3')
+        type("!unlock", pressX, pressY, 5)
+        e.wait(5)
+        playsound('navi_hey_listen_floating.mp3')
+        type("!unlock", pressX, pressY, 4)
+
+
+def find_words(text, search):
+    dText = text.split()
+    dSearch = search.split()
+    found_word = 0
+
+    for text_word in dText:
+        for search_word in dSearch:
+            if search_word == text_word:
+                found_word += 1
+    if found_word == len(dSearch):
+        if search == "(OPEN)":
+            order("!win",5,16)
+        # elif search == "ONYX has arrived!":
+        #    order("!bomb",3,14)
+        # elif search == "(BETS OPEN)":
+        #    order("!bet 100 win",3,14)
+        # elif search == "CASPIAN appears":
+        #    order("!bomb",3,14)
+        elif search == "raised!":
+            list_of_words = text.split()
+            next_word = list_of_words[list_of_words.index(search) + 2]
+            next_word = next_word[:-1]
+            next_word = next_word[1:]
+            next_word = next_word[1:]
+            order("!"+next_word,3,14)
+
+        elif search == "XP Boost activated":
+            order("f",3,14)
+        elif search == "find a Brawlhalla":
+            order("gg",3,14)
+    else:
+        return False
+
+
+def commands():
+    wait = 7
+    e.wait(wait)
+    slot()
+    e.wait(wait)
+    squid()
+    e.wait(wait)
+    slot3()
+    e.wait(wait)
+    slot6()
+    e.wait(wait)
+    slot7()
+    e.wait(wait)
+    squid6()
+    e.wait(wait)
+    rps()
+    e.wait(wait)
+    squid7()
+    e.wait(wait)
+    slot2()
+    e.wait(wait)
+    rps6()
+    e.wait(wait)
+    # spawn()
+    e.wait(wait)
+    rps7()
+    e.wait(wait)
+    squid3()
+    e.wait(wait)
+    squid2()
+    e.wait(wait)
+    rps3()
+    e.wait(wait)
+    rps2()
+    e.wait(wait)
+    slot4()
+    e.wait(wait)
+    slot5()
+    e.wait(wait)
+    squid4()
+    e.wait(wait)
+    squid5()
+    e.wait(wait)
+    rps4()
+    e.wait(wait)
+    rps5()
+    e.wait(wait)
+    slot8()
+    e.wait(wait)
+    squid8()
+    e.wait(wait)
+    rps8()
+    e.wait(20)
+    # spawn2()
+    e.wait(80)
+    # spawn3()
+    e.wait(80)
+    # spawn4()
+    e.wait(80)
+    # spawn5()
+    e.wait(80)
+    # spawn6()
+    e.wait(80)
+    # spawn7()
+    e.wait(80)
+    # spawn8()
+
+time.sleep(3)
+now_active = True
+commands = threading.Thread(target=commands)
+commands.start()
+activee()
+active = True
+random()
+shut = threading.Thread(target=shut_down, )
+shut.start()
+# ProBrawlhalla
+
+text2 = "ad"
+
+while True:
+
+    t0 = time.time()
+    img = ImageGrab.grab(bbox=(158, 936, 900, 964))
+    # img_np = np.array(ImageGrab.grab(bbox=(182, 936, 800, 964)))
+    # img_np = cv2.resize(img_np, (595, 27))
+    # img_np = cv2.cvtColor(img_np, cv2.COLOR_BGR2GRAY)
+    #  cv2.imshow("frame", frame)
+    #  cv2.waitKey(0)
+    text = pytesseract.image_to_string(img)
+
+    if activee.active == True:
+        if active == True:
+            active = False
+            activee.active = False
+        else:
+            mouse.position = (1455, 545)
+            mouse.click(Button.left, 1)
+
+    if text[:3] == "lla" or text[:3] == "\la" or text[:3] == "la:" or text[:3] == "Ila":
+        now_active = True
+        active = True
+
+    if text2 != text and now_active == True:
+        print(text)
+        find_words(text, "(OPEN)")
+        # find_words(text, "ONYX has arrived!")
+        # find_words(text, "(BETS OPEN)")
+        # find_words(text, "CASPIAN appears")
+        contains_word(text, "ane's name", 174, 1009)
+        contains_word(text, "xie's name", 174, 599)
+        contains_word(text, "owo’s name", 174, 359)
+        contains_word(text, "rpx's name", 174, 159)
+        contains_word(text, "uwu's name", 1200, 159)
+        contains_word(text, "_bh's name", 1200, 359)
+        contains_word(text, "per's name", 1485, 359)
+        contains_word(text, "nes's name", 1200, 599)
+        find_words(text, "XP Boost activated")
+        find_words(text, "raised!")
+        #    find_words(text, "missed!")
+        find_words(text, "find a Brawlhalla")
+        text2 = text
+
+    now_active = False
+    t1 = time.time()
+    print(t1 - t0)
